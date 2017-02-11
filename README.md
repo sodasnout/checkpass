@@ -9,4 +9,5 @@ Python 2.7.x or Python 3.x are required and optionally [Pip](https://wiki.python
 ## Installing with Pip ##
 
 Open a command prompt and execute the command:
+
 `pip install git+git://github.com/sodasnout/checkpass`
