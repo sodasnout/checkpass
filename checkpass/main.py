@@ -25,9 +25,11 @@ from __future__ import print_function
 import bz2
 import os
 import argparse
-import codecs
 
 PASSWORD_FILES_DIR = os.path.join(os.path.dirname(__file__), 'known-passwords', 'sorted')
+
+with open(os.path.join(os.path.dirname(__file__), 'VERSION')) as f:
+	VERSION = f.read().strip()
 
 def map_to_filename(password):
 	"""
@@ -79,10 +81,11 @@ def parse_args():
 	"""
 	Handles argument parsing
 	"""
-	parser = argparse.ArgumentParser(description='Utility for verifying if a password if potentially unique.')
+	parser = argparse.ArgumentParser(prog='CheckPass', description='Utility for verifying if a password if potentially unique.')
 	parser.add_argument('password', help='Password to check for.')
 	parser.add_argument('-i', '--ignore-case', help='Ignore case.', action='store_true', dest='ignoreCasing')
-	parser.add_argument('-e', '--exact', help='Checks only for exact matches (casing is not checked with -i flag on)', action='store_true', dest='exactMatch')
+	parser.add_argument('-e', '--exact', help='Checks only for exact matches (casing is not checked with -i flag on).', action='store_true', dest='exactMatch')
+	parser.add_argument('-v', '--version', help='Displays version.', action='version', version='%(prog)s ' + VERSION)
 	return parser.parse_args()
 
 def main():
@@ -97,7 +100,10 @@ def main():
 		os.sys.exit(1)
 
 	if os.sys.stdout.encoding == 'utf-8':
-		print = __builtins__.print
+		if isinstance(__builtins__, dict):
+			print = __builtins__['print']
+		else:
+			print = __builtins__.print
 	else:
 		print = non_unicode_print
 

@@ -22,15 +22,20 @@
 
 from setuptools import setup
 
+import os.path
+
+with open(os.path.join(os.path.dirname(__file__), 'checkpass', 'VERSION')) as f:
+	VERSION = f.read().strip()
+
 setup(name='checkpass',
-	  version='1.0.0',
+	  version=VERSION,
 	  description='Utility for verifying unique passwords',
 	  url='https://github.com/sodasnout/checkpass',
 	  author='Sodasnout',
 	  author_email='sodasnout@gmail.com',
 	  license='MIT',
 	  packages=['checkpass'],
-	  package_data = {'checkpass': ['known-passwords/*', 'known-passwords/sorted/*']},
+	  package_data = {'checkpass': ['VERSION', 'known-passwords/*', 'known-passwords/sorted/*']},
 	  entry_points= {
 	  	'console_scripts': ['checkpass=checkpass.main:main']
 	  }
