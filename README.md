@@ -8,6 +8,20 @@ Python 2.7.x or Python 3.x are required and optionally [Pip](https://wiki.python
 
 ## Installing with Pip ##
 
-Open a command prompt and execute the command:
+Open a command prompt and execute the command (Administrator privileges may be required):
 
-`pip install git+git://github.com/sodasnout/checkpass`
+`python -m pip install git+git://github.com/sodasnout/checkpass`
+
+## Usage ##
+
+```
+checkpass [-h] [-i] [-e] password
+
+positional arguments:
+  password           Password to check for.
+
+optional arguments:
+  -h, --help         show this help message and exit
+  -i, --ignore-case  Ignore case.
+  -e, --exact        Checks only for exact matches (case is not checked with -i flag on)
+```

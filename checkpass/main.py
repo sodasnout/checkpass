@@ -74,7 +74,7 @@ def parse_args():
 	parser = argparse.ArgumentParser(description='Utility for verifying if a password if potentially unique.')
 	parser.add_argument('password', help='Password to check for.')
 	parser.add_argument('-i', '--ignore-case', help='Ignore case.', action='store_true', dest='ignoreCasing')
-	parser.add_argument('-e', '--exact', help='Checks only for exact matches (casing is only checked with -i flag on)', action='store_true', dest='exactMatch')
+	parser.add_argument('-e', '--exact', help='Checks only for exact matches (casing is not checked with -i flag on)', action='store_true', dest='exactMatch')
 	return parser.parse_args()
 
 def main():
