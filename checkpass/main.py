@@ -25,6 +25,7 @@ from __future__ import print_function
 import bz2
 import os
 import argparse
+import codecs
 
 PASSWORD_FILES_DIR = os.path.join(os.path.dirname(__file__), 'known-passwords', 'sorted')
 
@@ -60,12 +61,19 @@ def check_password(password, ignore_case=False, exact_match=False):
 				matches.append(pw)
 		else:
 			value_length = len(value)
-			if value_length > password_length:
-				if value.find(password) == 0 and matches.count(pw) == 0:
-					matches.append(pw)
-			elif value_length > 0 and password.find(value) == 0 and matches.count(pw) == 0:
+			if value_length > password_length and value.find(password) == 0 and matches.count(pw) == 0:
 				matches.append(pw)
 	return matches
+
+def non_unicode_print(*objects):
+	"""
+	Handles printing unicode strings if stdout isn't using utf-8
+	"""
+	encoded_objects = []
+	for o in objects:
+		encoded_objects.append(bytes(o, encoding='utf-8').decode(os.sys.stdout.encoding))
+	print(*encoded_objects)
+
 
 def parse_args():
 	"""
@@ -87,6 +95,11 @@ def main():
 	except Exception as e:
 		print('An error occured: ', e)
 		os.sys.exit(1)
+
+	if os.sys.stdout.encoding == 'utf-8':
+		print = __builtins__.print
+	else:
+		print = non_unicode_print
 
 	matches_length = len(matches)
 	if matches_length <= 0:
