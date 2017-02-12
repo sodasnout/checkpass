@@ -31,6 +31,6 @@ setup(name='checkpass',
 	  license='MIT',
 	  packages=['checkpass'],
 	  entry_points= {
-	  	'console_scripts': ['checkpass=checkpass.main.py:main']
+	  	'console_scripts': ['checkpass=checkpass.main:main']
 	  }
 	)
