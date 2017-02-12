@@ -23,7 +23,6 @@
 from __future__ import print_function
 
 import bz2
-import encodings.utf_8
 import os
 import argparse
 
@@ -87,7 +86,6 @@ def main():
 		matches = check_password(args.password, args.ignoreCasing, args.exactMatch)
 	except Exception as e:
 		print('An error occured: ', e)
-		raise e
 		os.sys.exit(1)
 
 	matches_length = len(matches)
