@@ -12,6 +12,11 @@ Open a command prompt and execute the command (Administrator privileges may be r
 
 `python -m pip install git+git://github.com/sodasnout/checkpass`
 
+To uninstall with Pip (Administrator privileges may be required):
+
+`python -m pip uninstall checkpass`
+
+
 ## Usage ##
 
 ```
