@@ -23,7 +23,7 @@
 from setuptools import setup
 
 setup(name='checkpass',
-	  version='0.1',
+	  version='1.0.0',
 	  description='Utility for verifying unique passwords',
 	  url='https://github.com/sodasnout/checkpass',
 	  author='Sodasnout',
