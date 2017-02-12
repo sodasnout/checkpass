@@ -30,6 +30,7 @@ setup(name='checkpass',
 	  author_email='sodasnout@gmail.com',
 	  license='MIT',
 	  packages=['checkpass'],
+	  package_data = {'checkpass': ['known-passwords/*']},
 	  entry_points= {
 	  	'console_scripts': ['checkpass=checkpass.main:main']
 	  }
